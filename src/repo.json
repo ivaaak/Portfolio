@@ -1,0 +1,320 @@
+[
+    {
+        "id": 502970254,
+        "name": ".NET RealEstate",
+        "html_url": "https://github.com/ivaaak/.NET-RealEstate",
+        "image": "https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/main/RealEstate.ApiGateway/RealEstateAPI-Architecture.png",
+        "tags": [".NET", "Angular"],
+        "description": ".NET RealEstate API - A web project built with .NET, Microservices(and DBs) MediatR/CQRS Pattern, EF Core, PostgreSQL, Redis. It can be used for listing, browsing and renting/selling properties. (WIP)"
+    },
+    {
+        "id": 464921535,
+        "name": ".NET Movie Manager",
+        "html_url": "https://github.com/ivaaak/.NET-MovieManager",
+        "image": "https://raw.githubusercontent.com/ivaaak/ASP.NET-MovieManager/master/design/profilePageNew.png",
+        "tags": [".NET"],
+        "description": ".NET-MovieManager - A full stack (MVC) web project built with .NET, EF Core and the TMDB API, using Razor Pages as FE"
+    },
+    {
+        "id": 464921,
+        "name": "ML MovieRecommend",
+        "html_url": "https://github.com/ivaaak/ML-MovieRecommend",
+        "image": "https://raw.githubusercontent.com/ivaaak/ML-MovieRecommend/813c4c2158eabf0c3c48bf8508ef24929a9256e4/MovieRecommend.Web/screenshots/screen2.png",
+        "tags": [".NET", "React"],
+        "description": "Predicting Movie Ratings by using Matrix Factorization. A full stack web project built with .NET, ML .NET and React"
+    },
+    {
+        "id": 612125367,
+        "name": ".NET Ocelot API Gateway",
+        "html_url": "https://github.com/ivaaak/.NET-Ocelot-API-Gateway",
+        "image": "https://raw.githubusercontent.com/ivaaak/.NET-Ocelot-API-Gateway/main/ApiGatewayBasicDiagram.png",
+        "tags": [".NET"],
+        "description": null
+    },
+    {
+        "id": 790377688,
+        "name": "ArchAI",
+        "html_url": "https://github.com/ivaaak/ArchAI",
+        "image": "https://raw.githubusercontent.com/ivaaak/ArchAI/main/frontend/public/screenshots/2.png",
+        "tags": ["React", "Express", "StableDiffusion"],
+        "description": "ArchAI - React / Express / StableDiffusion / ControlNet- generate architectural sketches and drawings (WIP)"
+    },
+    {
+        "id": 788620593,
+        "name": "FinAI",
+        "full_name": "ivaaak/FinAI",
+        "html_url": "https://github.com/ivaaak/FinAI",
+        "image": "https://repository-images.githubusercontent.com/677847575/fc956bc1-7afb-4cb7-866a-d94f81e1d622",
+        "tags": ["React", "Express", "LlamaCPP"],
+        "description": "FinAI - React / Express / NodeLlamaCPP Financial App (get financial predictions based on a LLM) (WIP)"
+    },
+    {
+        "id": 776443167,
+        "name": "Vue D3 Floorplan App",
+        "html_url": "https://github.com/ivaaak/D3-Express-Floorplan-App",
+        "image": "https://raw.githubusercontent.com/ivaaak/D3-Express-Floorplan-App/main/client/screens/1.png",
+        "tags": ["Vue", "Express", "D3.js"],
+        "description": "Desk Reservation - Vue / Express / D3.js - floorplan / desk reservation system (WIP)"
+    },
+    {
+        "id": 834776317,
+        "name": "DockerCompose Visualizer",
+        "html_url": "https://github.com/ivaaak/DockerCompose-Visualizer",
+        "image": "https://raw.githubusercontent.com/ivaaak/DockerCompose-Visualizer/main/screenshots/4.png",
+        "tags": ["React"],
+        "description": "A react app which takes a dockercompose file as an input and generates a graph of the services and their metadata"
+    },
+    {
+        "id": 819015919,
+        "name": "habGIT",
+        "html_url": "https://github.com/ivaaak/habGIT",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["React"],
+        "description": "A react habit tracker app which uses a heatmap similar to the git activity tracker to visualize the user's habits. (WIP)"
+    },
+    {
+        "id": 8190,
+        "name": "React Pathfinding Visualization",
+        "html_url": "https://github.com/ivaaak/React-Pathfinding-Visualization",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Pathfinding-Visualization/main/screenshots/animation.png",
+        "tags": ["React"],
+        "description": "A react app which aims to visualize different pathfinding algorithms by using a grid and start/end nodes and walls"
+    },
+    {
+        "id": 8133333,
+        "name": "Web3 Tokenization",
+        "html_url": "https://github.com/ivaaak/Web3-Tokenization",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["Solidity", "React", "Ethers.js", "Express"],
+        "description": "A react habit tracker app which uses a heatmap similar to the git activity tracker to visualize the user's habits. (WIP)"
+    },
+    {
+        "id": 81901591,
+        "name": "KeepersOfTheGate",
+        "html_url": "https://github.com/ivaaak/KeepersOfTheGate",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["React", "Java", "Arduino/C"],
+        "description": "Our team's entry for the company's internal hackathon event"
+    },
+    {
+        "id": 8190159,
+        "name": "Java 2D OpenGL Game",
+        "html_url": "https://github.com/ivaaak/Java-OpenGL-Game",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["React", "Java", "Arduino/C"],
+        "description": ""
+    },
+    {
+        "id": 8190159,
+        "name": "Unity Mobile AR Furniture Test",
+        "html_url": "https://github.com/ivaaak/Unity/tree/main/AR%20Furniture%20Test",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["C#", "Unity", "Mobile"],
+        "description": ""
+    },
+    {
+        "id": 1,
+        "name": "React Hacker News",
+        "html_url": "https://github.com/ivaaak/React-Hacker-News",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Hacker-News/main/screens/screen.png",
+        "tags": ["React"],
+        "description": "A react app which displays articles from hacker news, allows the user to search for topics/articles"
+    },
+    {
+        "id": 2,
+        "name": "React Pagination Github",
+        "html_url": "https://github.com/ivaaak/React-Pagination-Github",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Pagination-Github/main/screens/screen.png",
+        "tags": ["React"],
+        "description": "A React SPA which showcases pagination in react by displaying github accounts from an API."
+    },
+    {
+        "id": 3,
+        "name": "React Markdown Preview",
+        "html_url": "https://github.com/ivaaak/React-Markdown-Preview",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Markdown-Preview/main/screens/screen2.png",
+        "tags": ["React"],
+        "description": "A react app which has an input field for text/markdown and an output field where it is previewed in real time (effects/images included)."
+    },
+    {
+        "id": 4,
+        "name": "React MovieSearch SPA",
+        "html_url": "https://github.com/ivaaak/React-MovieSearch-SPA",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-MovieSearch-SPA/main/screens/searchlist2.png",
+        "tags": ["React"],
+        "description": "A single page application built with react which allows the user to search for a movie/tv show by title using the OMDB API. (There is an app which returns a list of results and one which returns only the first result)"
+    },
+    {
+        "id": 5,
+        "name": "React Poker Trainer",
+        "html_url": "https://github.com/ivaaak/React-PokerTrainer",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-PokerTrainer/main/public/screenshots/3.png",
+        "tags": ["React"],
+        "description": "(Still WIP) A simple react app which aims to help people wanting to get theoretical knowledge about poker hands."
+    },
+    {
+        "id": 6,
+        "name": "RealEstate FE",
+        "html_url": "https://github.com/ivaaak/RealEstate-FE",
+        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "tags": ["Angular"],
+        "description": "AirBNB Clone FE for the .NET RealEstate API"
+    },
+    {
+        "id": 7,
+        "name": "Vue.js News Reader",
+        "html_url": "https://github.com/ivaaak/Vue.js-News-Reader",
+        "image": "https://raw.githubusercontent.com/ivaaak/Vue.js-News-Reader/main/screen.png",
+        "tags": ["Vue"],
+        "description": ""
+    },
+    {
+        "id": 8,
+        "name": "JS D3.js Map Meteor Impacts",
+        "html_url": "https://github.com/ivaaak/JS-D3-Map-Meteor-Impacts",
+        "image": "https://raw.githubusercontent.com/ivaaak/JS-D3-Map-Meteor-Impacts/main/screen-globe.png",
+        "tags": ["Javascript", "D3.js"],
+        "description": "Two Javascript single page apps which map global meteor impacts from a JSON file to a 2D map/ globe using the D3.js data visualization library"
+    },
+    {
+        "id": 9,
+        "name": "JS Github User Search",
+        "html_url": "https://github.com/ivaaak/JS-Github-User-Search",
+        "image": "https://raw.githubusercontent.com/ivaaak/JS-Github-User-Search/main/screens/screen.png",
+        "tags": ["Javascript"],
+        "description": "A JS GitHub user search app which uses the Github user API (from a challenge on the site FrontendMentor)."
+    },
+    {
+        "id": 46492153,
+        "name": ".NET Middlewares",
+        "html_url": "https://github.com/ivaaak/.NET-Middlewares",
+        "description": null
+    },
+    {
+        "id": 481941567,
+        "name": ".NET SignalR Demo",
+        "html_url": "https://github.com/ivaaak/.NET-SignalR-Demo",
+        "description": "An ASP.NET project built with and showcasing SignalR functionality as a chat client/service."
+    },
+    {
+        "id": 606699548,
+        "name": ".NET Stripe API Demo",
+        "html_url": "https://github.com/ivaaak/.NET-Stripe-API-Demo",
+        "description": null
+    },
+    {
+        "id": 488100957,
+        "name": ".NET Toastr Demo",
+        "html_url": "https://github.com/ivaaak/.NET-Toastr-Demo",
+        "description": null
+    },
+    {
+        "id": 641520342,
+        "name": "Angular Playground",
+        "html_url": "https://github.com/ivaaak/Angular-Playground"
+    },
+    {
+        "id": 598704947,
+        "name": "Angular Tour Of Heroes",
+        "html_url": "https://github.com/ivaaak/Angular-Tour-Of-Heroes",
+        "description": "The demo from the angular docs."
+    },
+    {
+        "id": 470913236,
+        "name": "Angular Wikipedia Reader",
+        "html_url": "https://github.com/ivaaak/Angular-Wikipedia-Reader",
+        "description": "An Angular SPA which allows the user to search for and read a quick summary of wikipedia articles"
+    },
+
+
+    {
+        "id": 471918470,
+        "name": "C# API Examples",
+        "html_url": "https://github.com/ivaaak/CSharp-API",
+        "description": "A showcase of different ASP.NET REST APIs."
+    },
+    {
+        "id": 488898288,
+        "name": "C# CosmosDB Demo",
+        "html_url": "https://github.com/ivaaak/CSharp-Cosmos-DB-Demo",
+        "description": "A demo of CosmosDB functions and CRUD operations (based off a SoftUni seminar)"
+    },
+    {
+        "id": 463448893,
+        "name": "C# Data Structures",
+        "html_url": "https://github.com/ivaaak/CSharp-Data-Structures",
+        "description": "A collection of different implementations of common data structures."
+    },
+    {
+        "id": 464453354,
+        "name": "C# DB EFCore Projects",
+        "html_url": "https://github.com/ivaaak/CSharp-DB-EF-Core-Projects",
+        "description": "A repository which contains many EF Core Projects - Database Schemas for different projects. Used for learning EF Core during the Softuni C# DB Advanced course."
+    },
+    {
+        "id": 492456038,
+        "name": "C# Design Patterns",
+        "html_url": "https://github.com/ivaaak/CSharp-Design-Patterns",
+        "description": "Project : Design Patterns Examples in C#"
+    },
+    {
+        "id": 501280016,
+        "name": "C# ElasticSearch Kibana",
+        "html_url": "https://github.com/ivaaak/CSharp-ElasticSearch-Kibana",
+        "description": "An ASP.NET Web API app which shows off Serilog and ElasticSearch usage. Also Kibana is configured and can be used to search through and query the logs."
+    },
+    {
+        "id": 485667991,
+        "name": "C# MongoDB Demo",
+        "html_url": "https://github.com/ivaaak/CSharp-MongoDB-Demo",
+        "description": null
+    },
+    {
+        "id": 497329877,
+        "name": "C# Polly Retries",
+        "html_url": "https://github.com/ivaaak/CSharp-Polly-Request-Response",
+        "description": "Polly is a .NET library that provides resilience and transient-fault handling capabilities. This demo implements Polly policies such as Retry and Timeout. It consists of 2 API apps which create requests and responses."
+    },
+    {
+        "id": 495577870,
+        "name": "C# PostgreSQL EFCore Demo",
+        "html_url": "https://github.com/ivaaak/CSharp-PostgreSQL-Repo-Demo",
+        "description": null
+    },
+    {
+        "id": 524431467,
+        "name": "C# RabbitMQ",
+        "html_url": "https://github.com/ivaaak/CSharp-RabbitMQ",
+        "description": null
+    },
+    {
+        "id": 482501080,
+        "name": "C# Redis Demo",
+        "html_url": "https://github.com/ivaaak/CSharp-Redis-Demo",
+        "description": null
+    },
+    {
+        "id": 495031980,
+        "name": "C# Unit Testing",
+        "html_url": "https://github.com/ivaaak/CSharp-Testing",
+        "description": "A showcase of different projects which were used to learn more about testing. Autofac/Mock, Unit testing etc."
+    },
+    {
+        "id": 474069511,
+        "name": "C# Web Server",
+        "html_url": "https://github.com/ivaaak/CSharp-Web-Server",
+        "description": "C# Basic Web Server - An IIS-inspired web server designed to mimic ASP.NET Core MVC and IIS Express/Kestrel. The repo contains the Server itself and a couple of mvc projects using it."
+    },
+    {
+        "id": 511059571,
+        "name": "Docker",
+        "html_url": "https://github.com/ivaaak/Docker",
+        "description": "A collection of docker compose files and tutorials/samples of docker usage. (Originally forked from TimCorey's getting started with Docker repo)"
+    },
+    {
+        "id": 483557324,
+        "name": "GraphQL Demo",
+        "html_url": "https://github.com/ivaaak/GraphQL-Demo",
+        "description": "Still a work in progress - a demo/playground used to learn more about querying and GraphQL in genral."
+    }
+]

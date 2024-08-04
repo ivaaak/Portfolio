@@ -1,0 +1,91 @@
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background-color: white;
+    border-radius: 8px;
+    max-width: 80%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.window-title {
+    font-size: 1.2rem;
+}
+
+
+.window-tags {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    border-radius: 6px;
+    font-size: 0.8em;
+    color: white;
+    font-weight: 400;
+    padding: 2px 6px 2px 6px;
+    border-radius: 10px;
+}
+
+.dialog-image {
+    margin-left: 10%;
+    width: 80%;
+    height: 80%;
+}
+
+.dialog-close-button {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #ff5f56;
+}
+
+
+.readme-content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.readme-content h1,
+.readme-content h2,
+.readme-content h3 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.readme-content code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+}
+
+.readme-content pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+}
