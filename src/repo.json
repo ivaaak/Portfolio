@@ -84,33 +84,33 @@
         "id": 8133333,
         "name": "Web3 Tokenization",
         "html_url": "https://github.com/ivaaak/Web3-Tokenization",
-        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "image": "https://moralis.io/wp-content/uploads/2021/06/Blog-Solidity-Logo.png",
         "tags": ["Solidity", "React", "Ethers.js", "Express"],
-        "description": "A react habit tracker app which uses a heatmap similar to the git activity tracker to visualize the user's habits. (WIP)"
+        "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
     },
     {
         "id": 81901591,
         "name": "KeepersOfTheGate",
         "html_url": "https://github.com/ivaaak/KeepersOfTheGate",
-        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "image": "https://raw.githubusercontent.com/ivaaak/KeepersOfTheGate/main/frontend/public/1.png",
         "tags": ["React", "Java", "Arduino/C"],
-        "description": "Our team's entry for the company's internal hackathon event"
+        "description": "Our team's entry for the company's internal hackathon event. An IoT app which combines a web app (React/Java) with an Arduino with different sensors to track real world conditions in an office / living area."
     },
     {
         "id": 8190159,
         "name": "Java 2D OpenGL Game",
         "html_url": "https://github.com/ivaaak/Java-OpenGL-Game",
-        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
-        "tags": ["React", "Java", "Arduino/C"],
-        "description": ""
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Opengl-logo.svg/2560px-Opengl-logo.svg.png",
+        "tags": ["Java", "OpenGL"],
+        "description": "A 2D Java game which uses OpenGL to render the player model and various moving items - rewards and traps."
     },
     {
         "id": 8190159,
         "name": "Unity Mobile AR Furniture Test",
         "html_url": "https://github.com/ivaaak/Unity/tree/main/AR%20Furniture%20Test",
-        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
+        "image": "https://raw.githubusercontent.com/ivaaak/Portfolio/main/public/AR-Repo-Screenshot.png",
         "tags": ["C#", "Unity", "Mobile"],
-        "description": ""
+        "description": "AR Furniture App - Allows the users to scan the floor/a flat plane and place a life sized piece of furniture using AR. The app is developed with iOS/Android in mind in Unity using the ARCore XR Plugin, AR Foundation, ARKit XR Plugin"
     },
     {
         "id": 1,
