@@ -89,3 +89,10 @@
     background-color: #f6f8fa;
     border-radius: 3px;
 }
+
+.readme-image {
+    max-width: 100%;
+    min-height: 400px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}

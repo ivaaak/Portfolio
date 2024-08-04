@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactMarkdown, { Components } from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { RepoData } from './utils/RepoData';
 import { getTagColor } from './utils/getTagColor';
@@ -36,11 +36,6 @@ export const Dialog: React.FC<DialogProps> = ({ repo, onClose }) => {
     fetchReadme();
   }, [repo.html_url]);
 
-  const getGitHubUrl = (path: string) => {
-    const [, , , owner, repoName] = repo.html_url.split('/');
-    return `https://github.com/${owner}/${repoName}/raw/main/${path}`;
-  };
-
   const components = {
     img: ({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
       <img
@@ -48,6 +43,7 @@ export const Dialog: React.FC<DialogProps> = ({ repo, onClose }) => {
         src={src}
         alt={alt}
         style={{ maxWidth: '100%' }}
+        className="readme-image"
       />
     ),
     a: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
