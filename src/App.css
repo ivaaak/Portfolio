@@ -16,24 +16,23 @@ h2 {
 
 .github-repos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-  gap: 60px;
+  gap: 30px;
   max-width: 100vw;
   margin: 0 auto;
 }
 
+p {
+  margin: 0;
+}
+
 .project-window {
   background-color: white;
-  width: 510px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgb(0, 0, 150);
   overflow: hidden;
-}
-
-
-.project-window {
   width: 100%;
   height: 100%;
 }
@@ -44,6 +43,8 @@ h2 {
 
 img {
   width: 100%;
+  max-height: 60%;
+  cursor: grab;
 }
 
 .window-top-bar {
@@ -52,12 +53,14 @@ img {
   padding: 5px;
   display: flex;
   align-items: center;
+  cursor: grab;
 }
 
 .window-title {
   margin-left: 30px;
   color: rgb(0, 0, 0);
   font-weight: 800;
+  cursor: pointer;
 }
 
 .window-tags {
@@ -88,9 +91,10 @@ a {
 }
 
 .close-button, .minimize-button, .maximize-button {
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .close-button { background-color: #ff5f56; }

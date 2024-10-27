@@ -1,11 +1,19 @@
 [
     {
         "id": 502970254,
-        "name": ".NET RealEstate",
+        "name": "RealEstate API",
         "html_url": "https://github.com/ivaaak/.NET-RealEstate",
         "image": "https://raw.githubusercontent.com/ivaaak/.NET-RealEstate/main/RealEstate.ApiGateway/RealEstateAPI-Architecture.png",
         "tags": [".NET", "Angular"],
         "description": ".NET RealEstate API - A web project built with .NET, Microservices(and DBs) MediatR/CQRS Pattern, EF Core, PostgreSQL, Redis. It can be used for listing, browsing and renting/selling properties. (WIP)"
+    },
+    {
+        "id": 6,
+        "name": "RealEstate FE",
+        "html_url": "https://github.com/ivaaak/RealEstate-FE",
+        "image": "https://raw.githubusercontent.com/ivaaak/RealEstate-FE/main/screenshots/1.png",
+        "tags": ["Angular"],
+        "description": "An Angular AirBnb Website Clone which is a FE for the .NET RealEstate API"
     },
     {
         "id": 464921535,
@@ -24,14 +32,6 @@
         "description": "Predicting Movie Ratings by using Matrix Factorization. A full stack web project built with .NET, ML .NET and React"
     },
     {
-        "id": 612125367,
-        "name": ".NET Ocelot API Gateway",
-        "html_url": "https://github.com/ivaaak/.NET-Ocelot-API-Gateway",
-        "image": "https://raw.githubusercontent.com/ivaaak/.NET-Ocelot-API-Gateway/main/ApiGatewayBasicDiagram.png",
-        "tags": [".NET"],
-        "description": null
-    },
-    {
         "id": 790377688,
         "name": "ArchAI",
         "html_url": "https://github.com/ivaaak/ArchAI",
@@ -40,11 +40,45 @@
         "description": "ArchAI - React / Express / StableDiffusion / ControlNet- generate architectural sketches and drawings (WIP)"
     },
     {
+        "id": 788620594,
+        "name": "LLM Visualizer",
+        "full_name": "ivaaak/LLMVisualizer",
+        "html_url": "https://github.com/ivaaak/React-Neural-Network-Visualization",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Neural-Network-Visualization/main/screenshots/1.png",
+        "tags": ["React", "Express", "LlamaCPP"],
+        "description": "A react app which aims to visualize the data flow in a neural network by using a nodes and edges for the different layers (inputlayer/ n x hidden layers / output layer)."
+    },
+    {
+        "id": 8190,
+        "name": "React Pathfinding Visualization",
+        "html_url": "https://github.com/ivaaak/React-Pathfinding-Visualization",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Pathfinding-Visualization/main/screenshots/animation.png",
+        "tags": ["React"],
+        "description": "A react app which aims to visualize different pathfinding algorithms by using a grid and start/end nodes and walls"
+    },
+    {
+        "id": 8133333,
+        "name": "Web3 Tokenization",
+        "html_url": "https://github.com/ivaaak/Web3-Tokenization",
+        "image": "https://moralis.io/wp-content/uploads/2021/06/Blog-Solidity-Logo.png",
+        "tags": ["Solidity", "React", "Ethers.js", "Express"],
+        "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
+    },
+    {
+        "id": 1337,
+        "name": "Typescript Leetcode",
+        "full_name": "ivaaak/FinAI",
+        "html_url": "https://github.com/ivaaak/Leetcode-Typescript",
+        "image": "https://miro.medium.com/v2/resize:fit:1008/1*VOQU8CuPG34Gsd1yJCadOQ.png",
+        "tags": ["Typescript"],
+        "description": "Typescript solutions of Leetcode problems"
+    },
+    {
         "id": 788620593,
         "name": "FinAI",
         "full_name": "ivaaak/FinAI",
         "html_url": "https://github.com/ivaaak/FinAI",
-        "image": "https://repository-images.githubusercontent.com/677847575/fc956bc1-7afb-4cb7-866a-d94f81e1d622",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREU2RgXYGjrrJ10cxOQJIdzGwuokkp5C8dbg&s",
         "tags": ["React", "Express", "LlamaCPP"],
         "description": "FinAI - React / Express / NodeLlamaCPP Financial App (get financial predictions based on a LLM) (WIP)"
     },
@@ -65,28 +99,20 @@
         "description": "A react app which takes a dockercompose file as an input and generates a graph of the services and their metadata"
     },
     {
+        "id": 612125367,
+        "name": ".NET Ocelot API Gateway",
+        "html_url": "https://github.com/ivaaak/.NET-Ocelot-API-Gateway",
+        "image": "https://raw.githubusercontent.com/ivaaak/.NET-Ocelot-API-Gateway/main/ApiGatewayBasicDiagram.png",
+        "tags": [".NET"],
+        "description": null
+    },
+    {
         "id": 819015919,
         "name": "habGIT",
         "html_url": "https://github.com/ivaaak/habGIT",
         "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
         "tags": ["React"],
         "description": "A react habit tracker app which uses a heatmap similar to the git activity tracker to visualize the user's habits. (WIP)"
-    },
-    {
-        "id": 8190,
-        "name": "React Pathfinding Visualization",
-        "html_url": "https://github.com/ivaaak/React-Pathfinding-Visualization",
-        "image": "https://raw.githubusercontent.com/ivaaak/React-Pathfinding-Visualization/main/screenshots/animation.png",
-        "tags": ["React"],
-        "description": "A react app which aims to visualize different pathfinding algorithms by using a grid and start/end nodes and walls"
-    },
-    {
-        "id": 8133333,
-        "name": "Web3 Tokenization",
-        "html_url": "https://github.com/ivaaak/Web3-Tokenization",
-        "image": "https://moralis.io/wp-content/uploads/2021/06/Blog-Solidity-Logo.png",
-        "tags": ["Solidity", "React", "Ethers.js", "Express"],
-        "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
     },
     {
         "id": 81901591,
@@ -151,14 +177,6 @@
         "image": "https://raw.githubusercontent.com/ivaaak/React-PokerTrainer/main/public/screenshots/3.png",
         "tags": ["React"],
         "description": "(Still WIP) A simple react app which aims to help people wanting to get theoretical knowledge about poker hands."
-    },
-    {
-        "id": 6,
-        "name": "RealEstate FE",
-        "html_url": "https://github.com/ivaaak/RealEstate-FE",
-        "image": "https://raw.githubusercontent.com/ivaaak/habGIT/main/public/coding-habit.png",
-        "tags": ["Angular"],
-        "description": "AirBNB Clone FE for the .NET RealEstate API"
     },
     {
         "id": 7,

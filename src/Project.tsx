@@ -42,7 +42,9 @@ export const GitHubRepo: React.FC = () => {
                                         className="maximize-button"
                                         onClick={() => handleMaximize(repo)}
                                     ></div>                                </div>
-                                <div className="window-title">{repo.name}</div>
+                                <div className="window-title" onClick={() => handleMaximize(repo)}>
+                                    {repo.name}
+                                </div>
                                 <div className="window-tags">
                                     {repo.tags && repo.tags.map((tag, index) => (
                                         <span
