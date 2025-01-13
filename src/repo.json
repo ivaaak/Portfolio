@@ -99,6 +99,46 @@
         "description": "A react app which takes a dockercompose file as an input and generates a graph of the services and their metadata"
     },
     {
+        "id": 612,
+        "name": "AI JSON Translate",
+        "html_url": "https://github.com/ivaaak/JSON-Translator",
+        "image": "https://raw.githubusercontent.com/ivaaak/JSON-Translator/main/frontend/public/screenshots/1.png",
+        "tags": ["React", "ClaudeSDK"],
+        "description": null
+    },
+    {
+        "id": 6144,
+        "name": "Parametric Surfaces",
+        "html_url": "https://github.com/ivaaak/Parametric-Surfaces",
+        "image": "https://raw.githubusercontent.com/ivaaak/Parametric-Surfaces/main/screenshots/1.png",
+        "tags": ["React"],
+        "description": null
+    },
+    {
+        "id": 613,
+        "name": "React-Image-To-ASCII",
+        "html_url": "https://github.com/ivaaak/React-Image-To-ASCII",
+        "image": "https://raw.githubusercontent.com/ivaaak/React-Image-To-ASCII/main/screenshots/4.png",
+        "tags": ["React"],
+        "description": null
+    },
+    {
+        "id": 614,
+        "name": "Tree File Explorer",
+        "html_url": "https://github.com/ivaaak/file-explorer",
+        "image": "https://raw.githubusercontent.com/ivaaak/file-explorer/main/screenshots/2.png",
+        "tags": ["React"],
+        "description": null
+    },
+    {
+        "id": 615,
+        "name": "Bitcoin Typescript",
+        "html_url": "https://github.com/ivaaak/Bitcoin-Typescript",
+        "image": "https://www.investopedia.com/thmb/pzT2wbISy-wNtMypVlBjr39dydg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Blockchain_final-086b5b7b9ef74ecf9f20fe627dba1e34.png",
+        "tags": ["React"],
+        "description": null
+    },
+    {
         "id": 612125367,
         "name": ".NET Ocelot API Gateway",
         "html_url": "https://github.com/ivaaak/.NET-Ocelot-API-Gateway",
