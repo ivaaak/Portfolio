@@ -61,7 +61,7 @@
         "name": "Web3 Tokenization",
         "html_url": "https://github.com/ivaaak/Web3-Tokenization",
         "image": "https://moralis.io/wp-content/uploads/2021/06/Blog-Solidity-Logo.png",
-        "tags": ["Solidity", "React", "Ethers.js", "Express"],
+        "tags": ["Solidity", "Ethers.js"],
         "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
     },
     {

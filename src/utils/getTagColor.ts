@@ -11,6 +11,10 @@ export const getTagColor = (tag: string): string => {
             return '#DD0031'; // Red for Angular
         case 'express':
             return '#000000'; // Black for Express
+        case 'solidity':
+            return '#000000'; // Black for Solidity
+        case 'ethers.js':
+            return '#512BD4'; // Purple for Ethersjs
         default:
             return '#6c757d'; // Default gray color
     }
