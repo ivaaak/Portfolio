@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { RepoData } from './utils/RepoData';
 import { getTagColor } from './utils/getTagColor';
-import './Dialog.css'
+import styles from './Dialog.module.css';
 
 interface DialogProps {
   repo: RepoData;
@@ -42,8 +42,7 @@ export const Dialog: React.FC<DialogProps> = ({ repo, onClose }) => {
         {...props}
         src={src}
         alt={alt}
-        style={{ maxWidth: '100%' }}
-        className="readme-image"
+        className={styles.readmeImage}
       />
     ),
     a: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
@@ -58,38 +57,43 @@ export const Dialog: React.FC<DialogProps> = ({ repo, onClose }) => {
     ),
   };
 
-  console.log("components", components);
-
   return (
-    <div className="dialog-overlay">
-      <div className="dialog-content">
-        <div className="window-top-bar">
-          <div className="window-buttons">
-            <div className="dialog-close-button" onClick={onClose}></div>
+    <div className={styles.dialogOverlay}>
+      <div className={styles.dialogContent}>
+        <div className={styles.windowTopBar}>
+          <div className={styles.windowButtons}>
+            <div className={styles.dialogCloseButton} onClick={onClose}></div>
           </div>
-          <div className="window-title">{repo.name}</div>
-          <div className="window-tags">
+          <div className={styles.windowTitle}>{repo.name}</div>
+          <div className={styles.windowTags}>
             {repo.tags && repo.tags.map((tag, index) => (
               <span
                 key={index}
-                className="tag"
+                className={styles.tag}
                 style={{ background: getTagColor(tag) }}
               >
                 {tag}
               </span>
             ))}
           </div>
-          <a href={repo.html_url} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a 
+            href={repo.html_url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+          >
+            GitHub
+          </a>
         </div>
-        <div className="project-content">
-          {repo.image && <img src={repo.image} className='dialog-image' alt={repo.name} />}
+        <div className={styles.projectContent}>
+          {repo.image && <img src={repo.image} className={styles.dialogImage} alt={repo.name} />}
           <p>{repo.description || 'No description available'}</p>
 
           <h2>README: </h2>
           {readmeError ? (
             <p>{readmeError}</p>
           ) : readme ? (
-            <div className="readme-content">
+            <div className={styles.readmeContent}>
               <ReactMarkdown
                 components={components}
                 rehypePlugins={[rehypeRaw]}
