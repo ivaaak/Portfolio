@@ -1,0 +1,115 @@
+.topBar {
+    position: relative;
+    z-index: 90;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    transition: margin-left 0.3s ease;
+    margin-top: 45px;
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 250px;
+    width: 100%;
+}
+
+.searchInput {
+    width: 90%;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.searchInput:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 150, 0.2);
+}
+
+.tagFilters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.tagLabel {
+    font-weight: bold;
+    color: rgb(0, 0, 150);
+    margin-right: 5px;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.tagButton {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+.tagButton:hover {
+    background-color: #e0e0e0;
+}
+
+.tagSelected {
+    background-color: rgb(0, 0, 150);
+    color: white;
+    border-color: rgb(0, 0, 150);
+}
+
+.tagSelected:hover {
+    background-color: rgba(0, 0, 150, 0.8);
+}
+
+.clearAllButton {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+    margin-left: auto;
+}
+
+.clearAllButton:hover {
+    background-color: #e0e0e0;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .topBar {
+        padding: 10px;
+    }
+
+    .tagFilters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tagsContainer {
+        max-height: 120px;
+        overflow-y: auto;
+        padding: 5px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .clearAllButton {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+}

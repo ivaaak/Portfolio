@@ -1,14 +1,7 @@
-.githubRepos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  max-width: 100vw;
-  max-height: 100vh;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
+.contentContainer {
+  display: flex;
+  flex-direction: column;
   transition: margin-left 0.3s ease;
-  position: relative;
   min-height: 100vh;
 }
 
@@ -18,6 +11,19 @@
 
 .sidebarExpanded {
   margin-left: 270px;
+}
+
+.githubRepos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  flex-grow: 1;
 }
 
 .projectWindow {
@@ -35,6 +41,7 @@
 
 .dragging {
   z-index: 100;
+  /* Place above other cards when dragging */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: grabbing !important;
 }
@@ -65,10 +72,9 @@
 .closeButton,
 .minimizeButton,
 .maximizeButton {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  border: 1px solid black;
   cursor: pointer;
 }
 
@@ -131,6 +137,11 @@
 
 p {
   margin: 0;
+}
+
+.lastDragged {
+  z-index: 50; /* Keep last dragged item above others, but below currently dragging item */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 1800px) {
