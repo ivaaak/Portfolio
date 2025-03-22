@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Draggable from 'react-draggable';
 import reposData from './repo.json';
 import styles from './App.module.css';
@@ -30,30 +30,31 @@ export const App: React.FC = () => {
         );
     };
 
-    const handleMaximize = (repo: RepoData) => {
+    const handleMaximize = useCallback((repo: RepoData) => {
         setSelectedRepo(repo);
-    };
+    }, []);
 
-    const handleSidebarToggle = (collapsed: boolean) => {
+    const handleSidebarToggle = useCallback((collapsed: boolean) => {
         setIsSidebarCollapsed(collapsed);
-    };
-
-    const handleDragStart = (id: number) => {
+    }, []);
+      
+    const handleDragStart = useCallback((id: number) => {
         setDraggingId(id);
         setLastDraggedId(id);
-    };
+    }, []);
 
-    const handleDragStop = () => {
+    const handleDragStop = useCallback(() => {
         setDraggingId(null);
-    };
+    }, []);
 
-    const handleFilterChange = (filteredRepos: RepoData[]) => {
+    // Memoize this callback to prevent new function creation on every render
+    const handleFilterChange = useCallback((filteredRepos: RepoData[]) => {
         const visibilityFiltered = filteredRepos.filter(repo => {
             const originalRepo = allRepos.find(r => r.id === repo.id);
             return originalRepo ? originalRepo.visible : true;
         });
         setDisplayedRepos(visibilityFiltered);
-    };
+    }, [allRepos]); // Only recreate when allRepos changes
 
     return (
         <>
@@ -114,7 +115,7 @@ export const App: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className={styles.githubLink}
                                     >
-                                        GitHub
+                                        <img className={styles.githubIcon} src='https://cdn-icons-png.flaticon.com/512/25/25231.png' />
                                     </a>
                                 </div>
                                 <div className={styles.projectContent}>

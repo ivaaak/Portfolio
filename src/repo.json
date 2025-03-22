@@ -28,7 +28,7 @@
         "name": "ML MovieRecommend",
         "html_url": "https://github.com/ivaaak/ML-MovieRecommend",
         "image": "https://raw.githubusercontent.com/ivaaak/ML-MovieRecommend/813c4c2158eabf0c3c48bf8508ef24929a9256e4/MovieRecommend.Web/screenshots/screen2.png",
-        "tags": [".NET", "React"],
+        "tags": [".NET", "React", "AI/ML"],
         "description": "Predicting Movie Ratings by using Matrix Factorization. A full stack web project built with .NET, ML .NET and React"
     },
     {
@@ -36,7 +36,7 @@
         "name": "ArchAI",
         "html_url": "https://github.com/ivaaak/ArchAI",
         "image": "https://raw.githubusercontent.com/ivaaak/ArchAI/main/frontend/public/screenshots/2.png",
-        "tags": ["React", "Express", "StableDiffusion"],
+        "tags": ["React", "Express", "AI/ML"],
         "description": "ArchAI - React / Express / StableDiffusion / ControlNet- generate architectural sketches and drawings (WIP)"
     },
     {
@@ -61,7 +61,7 @@
         "name": "Web3 Tokenization",
         "html_url": "https://github.com/ivaaak/Web3-Tokenization",
         "image": "https://moralis.io/wp-content/uploads/2021/06/Blog-Solidity-Logo.png",
-        "tags": ["Solidity", "Ethers.js"],
+        "tags": ["Solidity", "Ethers.js", "Web3"],
         "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
     },
     {
@@ -79,7 +79,7 @@
         "full_name": "ivaaak/FinAI",
         "html_url": "https://github.com/ivaaak/FinAI",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREU2RgXYGjrrJ10cxOQJIdzGwuokkp5C8dbg&s",
-        "tags": ["React", "Express", "Claude"],
+        "tags": ["React", "Express", "AI/ML"],
         "description": "FinAI - React / Express / NodeLlamaCPP Financial App (get financial predictions based on a LLM) (WIP)"
     },
     {
@@ -103,7 +103,7 @@
         "name": "AI JSON Translate",
         "html_url": "https://github.com/ivaaak/JSON-Translator",
         "image": "https://raw.githubusercontent.com/ivaaak/JSON-Translator/main/frontend/public/screenshots/1.png",
-        "tags": ["React", "Claude"],
+        "tags": ["React", "AI/ML"],
         "description": "A Web App built with React as a Frontend and Express as a Backend. It uses the Anthropic Claude SDK for translating the phrases in a translations JSON file."
     },
     {

@@ -15,6 +15,10 @@ export const getTagColor = (tag: string): string => {
             return '#000000'; // Black for Solidity
         case 'ethers.js':
             return '#512BD4'; // Purple for Ethersjs
+        case 'typescript':
+            return '#512BD4'; // Purple for Typescript
+        case 'javascript':
+            return '#E0BC00'; // Purple for Javascript
         default:
             return '#6c757d'; // Default gray color
     }

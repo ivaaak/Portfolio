@@ -59,14 +59,12 @@
 }
 
 .projectItem {
-    padding: 10px;
+    padding: 0 10px;
     margin-bottom: 8px;
     border-radius: 10px;
     cursor: pointer;
     background-color: white;
     transition: all 0.2s ease;
-    border: 1px solid rgb(0, 0, 150);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .projectItem:hover {
@@ -76,7 +74,7 @@
 
 .projectName {
     display: block;
-    font-weight: 800;
+    font-weight: 500;
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;

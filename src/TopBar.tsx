@@ -1,6 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { RepoData } from './utils/RepoData';
 import styles from './TopBar.module.css';
+
+// Developer Dialog component
+interface DevDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const DeveloperDialog: React.FC<DevDialogProps> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className={styles.dialogOverlay}>
+      <div className={styles.dialogContent}>
+        <button className={styles.closeButton} onClick={onClose}>×</button>
+        <h2>About Me</h2>
+        <div className={styles.developerInfo}>
+          <div className={styles.avatarLarge}>
+            <img src="https://avatars.githubusercontent.com/u/43663336?v=4" alt="Ivaylo Pavlov" />
+          </div>
+          <div className={styles.developerDetails}>
+            <h3>Ivaylo Pavlov</h3>
+            <p className={styles.jobTitle}>Fullstack Developer (.NET/Java/Express and Angular/React/Vue/TS)</p>
+            <p className={styles.introduction}>
+              Passionate fullstack developer with expertise in both backend (.NET, Java, Express) 
+              and frontend (Angular, React, Vue, TypeScript) technologies. Building modern web applications 
+              with clean, maintainable code.
+            </p>
+            <div className={styles.skills}>
+              <h4>Skills</h4>
+              <div className={styles.skillTags}>
+                <span>React</span>
+                <span>Angular</span>
+                <span>Vue</span>
+                <span>.NET</span>
+                <span>Java</span>
+                <span>Express</span>
+                <span>TypeScript</span>
+                <span>JavaScript</span>
+                <span>Web3</span>
+                <span>AI / LLMs</span>
+
+              </div>
+            </div>
+            <div className={styles.company}>
+              <h4>Currently working at</h4>
+              <div className={styles.companyInfo}>
+                <span className={styles.companyName}>blubito</span>
+                <span className={styles.location}>Sofia</span>
+              </div>
+            </div>
+            <div className={styles.links}>
+              <a href="https://github.com/ivaaak" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:ivaaakpavlov@gmail.com">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface TopBarProps {
   repos: RepoData[];
@@ -10,21 +70,17 @@ interface TopBarProps {
 export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
+  // Use a constant array instead of state for available tags
+  const availableTags = useMemo(() => 
+    ["AI/ML", "Web3", ".NET", "Express", "Java", "React", "Angular", "Vue", "Javascript", "Typescript", "C#", "Unity"],
+    []
+  );
 
-  // Extract all unique tags when repos change
-  useEffect(() => {
-    const tagSet = new Set<string>();
-    repos.forEach(repo => {
-      if (repo.tags) {
-        repo.tags.forEach(tag => tagSet.add(tag));
-      }
-    });
-    setAvailableTags(Array.from(tagSet).sort());
-  }, [repos]);
-
-  useEffect(() => {
-    const filteredRepos = repos.filter(repo => {
+  // Memoize the filtering logic
+  const filteredRepos = useMemo(() => {
+    return repos.filter(repo => {
       const nameMatches = repo.name.toLowerCase().includes(searchTerm.toLowerCase());
       
       if (selectedTags.length === 0) {
@@ -37,9 +93,12 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
       
       return nameMatches && hasSelectedTag;
     });
-    
+  }, [searchTerm, selectedTags, repos]);
+
+  // Call onFilterChange only when filteredRepos changes
+  React.useEffect(() => {
     onFilterChange(filteredRepos);
-  }, [searchTerm, selectedTags, repos, onFilterChange]);
+  }, [filteredRepos, onFilterChange]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -58,6 +117,10 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
     setSelectedTags([]);
   };
 
+  const toggleDialog = () => {
+    setIsDialogOpen(!isDialogOpen);
+  };
+
   return (
     <div className={styles.topBar}>
       <div className={styles.searchContainer}>
@@ -68,11 +131,6 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
           onChange={handleSearchChange}
           className={styles.searchInput}
         />
-        {/* {searchTerm && (
-          <button onClick={() => setSearchTerm('')} className={styles.clearButton}>
-            ×
-          </button>
-        )} */}
       </div>
       
       <div className={styles.tagFilters}>
@@ -94,6 +152,10 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
           </button>
         )}
       </div>
+
+      <img className={styles.avatar} onClick={toggleDialog} src="https://avatars.githubusercontent.com/u/43663336?v=4 " alt="Developer avatar" />
+      
+      <DeveloperDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </div>
   );
 };

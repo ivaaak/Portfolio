@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { RepoData } from './utils/RepoData';
 import styles from './Sidebar.module.css';
 
@@ -11,17 +11,16 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ repos, onRepoSelect, onToggle }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  useEffect(() => {
-    // Notify parent component when sidebar state changes
-    if (onToggle) {
-      onToggle(isCollapsed);
-    }
-  }, [isCollapsed, onToggle]);
-
-  const toggleSidebar = () => {
-    setIsCollapsed(prev => !prev);
-  };
-
+  const toggleSidebar = useCallback(() => {
+    setIsCollapsed(prev => {
+      const newState = !prev;
+      if (onToggle) {
+        onToggle(newState);
+      }
+      return newState;
+    });
+  }, [onToggle]);
+  
   return (
     <div className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
       <div className={styles.toggleButton} onClick={toggleSidebar}>
