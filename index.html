@@ -9,10 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/Portfolio/assets/index-UnO61rOz.js"></script>
-    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-CO2eF0LZ.css">
+    <script>
+      // Apply a saved theme before first paint to avoid a flash of the wrong theme
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-DQ1Ak2Zl.js"></script>
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-DPvChGs5.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
