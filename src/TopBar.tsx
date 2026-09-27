@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { RepoData } from './utils/RepoData';
 import { getTagColor } from './utils/getTagColor';
-import { CloseIcon, GitHubIcon, MenuIcon, SearchIcon } from './Icons';
+import { CloseIcon, GitHubIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon } from './Icons';
+import { useTheme } from './utils/useTheme';
 import styles from './TopBar.module.css';
 
 const AVATAR_URL = 'https://avatars.githubusercontent.com/u/43663336?v=4';
@@ -77,6 +78,7 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, shownCount, closedCount, 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   // Tags derived from the data, most used first
   const availableTags = useMemo(() => {
@@ -142,6 +144,15 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, shownCount, closedCount, 
             aria-label="Search projects"
           />
         </div>
+
+        <button
+          className={`${styles.iconButton} ${styles.themeButton}`}
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={theme === 'dark' ? 'Light theme' : 'Dark theme'}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </button>
 
         <button className={styles.avatarButton} onClick={() => setIsDialogOpen(true)} aria-label="About me" title="About me">
           <img className={styles.avatar} src={AVATAR_URL} alt="" />
