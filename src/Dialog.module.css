@@ -1,130 +1,359 @@
 .dialogOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    inset: 0;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    padding: 24px;
+    background: var(--overlay);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
 }
 
 .dialogContent {
-    background-color: #fff;
-    color: black;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 900px;
-    height: 90vh;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 980px;
+    height: 100%;
+    max-height: 920px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: popIn 0.25s ease;
 }
 
+/* Window chrome */
 .windowTopBar {
-    background-color: #f0f0f0;
-    border-bottom: 1px solid rgb(0, 0, 150);
-    padding: 5px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 12px;
+    height: 44px;
+    padding: 0 14px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
-.windowButtons {
+.windowButtons,
+.windowButtonsSpacer {
     display: flex;
-    gap: 5px;
+    gap: 7px;
+    width: 58px;
+    flex-shrink: 0;
+}
+
+.dialogCloseButton,
+.inactiveLight {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .dialogCloseButton {
-    width: 18px;
-    height: 18px;
-    border: 1px solid black;
-    border-radius: 50%;
-    background-color: #ff5f56;
+    background: #ff5f57;
     cursor: pointer;
 }
 
+.dialogCloseButton:hover {
+    filter: brightness(0.9);
+}
+
+.inactiveLight {
+    background: var(--surface-3);
+}
+
 .windowTitle {
-    margin-left: 30px;
-    color: rgb(0, 0, 0);
-    font-weight: 800;
-    font-size: 1.5rem;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.windowTags {
-    margin-left: 20px;
-    margin-right: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.tag {
-    border-radius: 6px;
-    font-size: 0.8em;
-    color: white;
-    font-weight: 400;
-    padding: 2px 6px 2px 6px;
-    border-radius: 10px;
-}
-
-.githubLink {
-    color: inherit;
-    text-decoration: none;
-}
-
-.githubLink:hover {
-    background-color: #e1efff;
-    text-decoration: underline;
-}
-
+/* Content */
 .projectContent {
-    padding: 20px;
-    overflow-y: auto;
     flex-grow: 1;
+    overflow-y: auto;
+    padding: 28px 32px 40px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.hero:not(:has(.imageFrame)) {
+    grid-template-columns: 1fr;
+}
+
+.imageFrame {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    overflow: hidden;
 }
 
 .dialogImage {
-    max-width: 100%;
-    max-height: 300px;
+    display: block;
+    width: 100%;
+    max-height: 380px;
     object-fit: contain;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    border: 1px solid #e1e4e8;
 }
 
+.meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.projectTitle {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+}
+
+.description {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.githubLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: var(--text);
+    color: var(--surface);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity 0.15s ease;
+}
+
+.githubLink:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.readmeHeader {
+    margin: 32px 0 0;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    background: var(--surface-2);
+    font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.status {
+    margin: 0;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 0 0 10px 10px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 0 0 10px 10px;
+}
+
+.skeleton span {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--surface-3), var(--surface-2), var(--surface-3));
+    background-size: 200% 100%;
+    animation: shimmer 1.2s linear infinite;
+}
+
+.skeleton span:nth-child(1) { width: 40%; height: 20px; }
+.skeleton span:nth-child(2) { width: 92%; }
+.skeleton span:nth-child(3) { width: 85%; }
+.skeleton span:nth-child(4) { width: 60%; }
+
+/* README markdown */
 .readmeContent {
+    padding: 8px 28px 28px;
+    border: 1px solid var(--border);
+    border-radius: 0 0 10px 10px;
+    font-size: 0.925rem;
+    line-height: 1.7;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.readmeContent h1,
+.readmeContent h2,
+.readmeContent h3,
+.readmeContent h4 {
+    margin: 1.6em 0 0.6em;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.readmeContent h1,
+.readmeContent h2 {
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid var(--border);
+}
+
+.readmeContent > :first-child {
     margin-top: 20px;
-    border-top: 1px solid #e1e4e8;
-    padding-top: 16px;
+}
+
+.readmeContent h1 { font-size: 1.6rem; }
+.readmeContent h2 { font-size: 1.3rem; }
+.readmeContent h3 { font-size: 1.1rem; }
+
+.readmeContent p,
+.readmeContent ul,
+.readmeContent ol,
+.readmeContent blockquote,
+.readmeContent table,
+.readmeContent pre {
+    margin: 0 0 1em;
+}
+
+.readmeContent ul,
+.readmeContent ol {
+    padding-left: 1.5em;
+}
+
+.readmeContent li + li {
+    margin-top: 0.25em;
+}
+
+.readmeContent blockquote {
+    padding: 0 1em;
+    border-left: 3px solid var(--border-strong);
+    color: var(--muted);
+}
+
+.readmeContent hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 1.5em 0;
+}
+
+.readmeContent table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.readmeContent th,
+.readmeContent td {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+}
+
+.readmeContent th {
+    background: var(--surface-2);
 }
 
 .readmeImage {
     max-width: 100%;
-    border-radius: 4px;
-    margin: 8px 0;
+    height: auto;
+    border-radius: 6px;
+    vertical-align: middle;
 }
 
 .readmeContent pre {
-    background-color: #f6f8fa;
-    border-radius: 6px;
-    padding: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
     overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.55;
 }
 
 .readmeContent code {
-    font-family: monospace;
-    background-color: #f6f8fa;
-    padding: 2px 4px;
-    border-radius: 3px;
+    font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: 0.85em;
+    padding: 0.15em 0.4em;
+    border-radius: 5px;
+    background: var(--surface-3);
+}
+
+.readmeContent pre code {
+    padding: 0;
+    background: none;
+    font-size: inherit;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from { transform: translateY(10px) scale(0.985); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+
+@keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
 }
 
 @media (max-width: 768px) {
+    .dialogOverlay {
+        padding: 0;
+    }
+
     .dialogContent {
-        width: 95%;
-        height: 95vh;
+        max-height: none;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .projectContent {
+        padding: 20px 16px 32px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .readmeContent {
+        padding: 4px 16px 20px;
     }
 }

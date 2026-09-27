@@ -1,43 +1,64 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import Draggable from 'react-draggable';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import reposData from './repo.json';
 import styles from './App.module.css';
-import { getTagColor } from './utils/getTagColor';
 import { RepoData } from './utils/RepoData';
 import { Dialog } from './Dialog';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
+import { ProjectCard } from './ProjectCard';
+
+const MOBILE_QUERY = '(max-width: 900px)';
 
 export const App: React.FC = () => {
     const [allRepos, setAllRepos] = useState<RepoData[]>(
-        (reposData as RepoData[]).map(repo => ({ ...repo, visible: true }))
+        (reposData as RepoData[]).map(repo => ({ ...repo, tags: repo.tags ?? [], visible: true }))
     );
-    const [displayedRepos, setDisplayedRepos] = useState<RepoData[]>([]);
+    const [filteredIds, setFilteredIds] = useState<Set<number> | null>(null);
     const [selectedRepo, setSelectedRepo] = useState<RepoData | null>(null);
-    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(isMobile);
     const [draggingId, setDraggingId] = useState<number | null>(null);
     const [lastDraggedId, setLastDraggedId] = useState<number | null>(null);
 
     useEffect(() => {
-        setDisplayedRepos(allRepos.filter(repo => repo.visible));
-    }, [allRepos]);
+        const media = window.matchMedia(MOBILE_QUERY);
+        const onChange = (e: MediaQueryListEvent) => {
+            setIsMobile(e.matches);
+            setIsSidebarCollapsed(e.matches);
+        };
+        media.addEventListener('change', onChange);
+        return () => media.removeEventListener('change', onChange);
+    }, []);
 
-    const handleClose = (id: number) => {
+    // Closed windows stay closed, and filters survive closing a window
+    const visibleRepos = useMemo(() => allRepos.filter(repo => repo.visible), [allRepos]);
+    const displayedRepos = useMemo(
+        () => visibleRepos.filter(repo => !filteredIds || filteredIds.has(repo.id)),
+        [visibleRepos, filteredIds]
+    );
+    const closedCount = allRepos.length - visibleRepos.length;
+
+    const handleClose = useCallback((id: number) => {
         setAllRepos(prevRepos =>
-            prevRepos.map(repo =>
-                repo.id === id ? { ...repo, visible: false } : repo
-            )
+            prevRepos.map(repo => (repo.id === id ? { ...repo, visible: false } : repo))
         );
-    };
+    }, []);
 
-    const handleMaximize = useCallback((repo: RepoData) => {
+    const handleRestoreAll = useCallback(() => {
+        setAllRepos(prevRepos => prevRepos.map(repo => ({ ...repo, visible: true })));
+    }, []);
+
+    const handleOpen = useCallback((repo: RepoData) => {
         setSelectedRepo(repo);
+        if (window.matchMedia(MOBILE_QUERY).matches) {
+            setIsSidebarCollapsed(true);
+        }
     }, []);
 
-    const handleSidebarToggle = useCallback((collapsed: boolean) => {
-        setIsSidebarCollapsed(collapsed);
+    const handleSidebarToggle = useCallback(() => {
+        setIsSidebarCollapsed(prev => !prev);
     }, []);
-      
+
     const handleDragStart = useCallback((id: number) => {
         setDraggingId(id);
         setLastDraggedId(id);
@@ -47,85 +68,59 @@ export const App: React.FC = () => {
         setDraggingId(null);
     }, []);
 
-    // Memoize this callback to prevent new function creation on every render
     const handleFilterChange = useCallback((filteredRepos: RepoData[]) => {
-        const visibilityFiltered = filteredRepos.filter(repo => {
-            const originalRepo = allRepos.find(r => r.id === repo.id);
-            return originalRepo ? originalRepo.visible : true;
-        });
-        setDisplayedRepos(visibilityFiltered);
-    }, [allRepos]); // Only recreate when allRepos changes
+        setFilteredIds(new Set(filteredRepos.map(repo => repo.id)));
+    }, []);
 
     return (
         <>
             <Sidebar
-                repos={allRepos.filter(repo => repo.visible)}
-                onRepoSelect={handleMaximize}
+                repos={displayedRepos}
+                collapsed={isSidebarCollapsed}
+                onRepoSelect={handleOpen}
                 onToggle={handleSidebarToggle}
             />
 
-            <div className={`${styles.contentContainer} ${isSidebarCollapsed ? styles.sidebarCollapsed : styles.sidebarExpanded}`}>
+            {isMobile && !isSidebarCollapsed && (
+                <div className={styles.scrim} onClick={handleSidebarToggle} />
+            )}
+
+            <div className={`${styles.contentContainer} ${isSidebarCollapsed || isMobile ? styles.sidebarCollapsed : styles.sidebarExpanded}`}>
                 <TopBar
                     repos={allRepos}
+                    shownCount={displayedRepos.length}
+                    closedCount={closedCount}
+                    onRestoreAll={handleRestoreAll}
                     onFilterChange={handleFilterChange}
+                    onMenuClick={handleSidebarToggle}
                 />
 
-                <div className={styles.githubRepos}>
-                    {displayedRepos.map((repo) => (
-                        <Draggable
+                <main className={styles.githubRepos}>
+                    {displayedRepos.map(repo => (
+                        <ProjectCard
                             key={repo.id}
-                            handle=".handle"
-                            bounds="parent"
-                            onStart={() => handleDragStart(repo.id)}
-                            onStop={handleDragStop}
-                        >
-                            <div
-                                className={`${styles.projectWindow} ${repo.visible ? '' : styles.hiddenProject} ${draggingId === repo.id ? styles.dragging : ''} ${lastDraggedId === repo.id ? styles.lastDragged : ''}`}
-                            >
-                                <div className={`${styles.windowTopBar} handle`}>
-                                    <div className={styles.windowButtons}>
-                                        <div className={styles.closeButton}
-                                            onClick={() => handleClose(repo.id)}
-                                        ></div>
-                                        <div className={styles.minimizeButton}
-                                            onClick={() => handleClose(repo.id)}
-                                        ></div>
-                                        <div
-                                            className={styles.maximizeButton}
-                                            onClick={() => handleMaximize(repo)}
-                                        ></div>
-                                    </div>
-                                    <div className={styles.windowTitle}>
-                                        {repo.name}
-                                    </div>
-                                    <div className={styles.windowTags}>
-                                        {repo.tags && repo.tags.map((tag, index) => (
-                                            <span
-                                                key={index}
-                                                className={styles.tag}
-                                                style={{ background: getTagColor(tag) }}
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <a
-                                        href={repo.html_url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.githubLink}
-                                    >
-                                        <img className={styles.githubIcon} src='https://cdn-icons-png.flaticon.com/512/25/25231.png' />
-                                    </a>
-                                </div>
-                                <div className={styles.projectContent}>
-                                    {repo.image && <img src={repo.image} alt={repo.name} className={styles.projectImage} onClick={() => handleMaximize(repo)} />}
-                                    <p>{repo.description || 'No description available'}</p>
-                                </div>
-                            </div>
-                        </Draggable>
+                            repo={repo}
+                            isDragging={draggingId === repo.id}
+                            isLastDragged={lastDraggedId === repo.id}
+                            onClose={handleClose}
+                            onOpen={handleOpen}
+                            onDragStart={handleDragStart}
+                            onDragStop={handleDragStop}
+                        />
                     ))}
-                </div>
+
+                    {displayedRepos.length === 0 && (
+                        <div className={styles.emptyState}>
+                            <p className={styles.emptyTitle}>No projects match</p>
+                            <p className={styles.emptyText}>Try a different search term or clear the tag filters.</p>
+                            {closedCount > 0 && (
+                                <button className={styles.emptyButton} onClick={handleRestoreAll}>
+                                    Reopen {closedCount} closed {closedCount === 1 ? 'window' : 'windows'}
+                                </button>
+                            )}
+                        </div>
+                    )}
+                </main>
             </div>
 
             {selectedRepo && (

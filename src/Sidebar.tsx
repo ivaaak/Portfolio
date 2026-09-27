@@ -1,62 +1,55 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { RepoData } from './utils/RepoData';
+import { getTagColor } from './utils/getTagColor';
+import { ChevronIcon } from './Icons';
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {
   repos: RepoData[];
+  collapsed: boolean;
   onRepoSelect: (repo: RepoData) => void;
-  onToggle?: (collapsed: boolean) => void;
+  onToggle: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ repos, onRepoSelect, onToggle }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const toggleSidebar = useCallback(() => {
-    setIsCollapsed(prev => {
-      const newState = !prev;
-      if (onToggle) {
-        onToggle(newState);
-      }
-      return newState;
-    });
-  }, [onToggle]);
-  
+export const Sidebar: React.FC<SidebarProps> = ({ repos, collapsed, onRepoSelect, onToggle }) => {
   return (
-    <div className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
-      <div className={styles.toggleButton} onClick={toggleSidebar}>
-        {isCollapsed ? '>' : '<'}
-      </div>
-      
-      {!isCollapsed && (
-        <div className={styles.content}>
-          <ul className={styles.projectList}>
-            {repos
-              .filter(repo => repo.visible)
-              .map(repo => (
-                <li 
-                  key={repo.id} 
-                  className={styles.projectItem}
-                  onClick={() => onRepoSelect(repo)}
-                >
-                  <span className={styles.projectName}>{repo.name}</span>
-                  {/* {repo.tags && repo.tags.length > 0 && (
-                    <div className={styles.tagList}>
-                      {repo.tags.slice(0, 2).map((tag, index) => (
-                        <span key={index} className={styles.tag}>
-                          {tag}
-                        </span>
-                      ))}
-                      {repo.tags.length > 2 && (
-                        <span className={styles.moreTag}>+{repo.tags.length - 2}</span>
-                      )}
-                    </div>
-                  )} */}
-                </li>
-              ))}
-          </ul>
+    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`} aria-hidden={collapsed}>
+      <div className={styles.header}>
+        <div className={styles.brand}>
+          <span className={styles.logo}>iv</span>
+          <div className={styles.brandText}>
+            <span className={styles.brandName}>ivaaak</span>
+            <span className={styles.brandSub}>Projects</span>
+          </div>
         </div>
-      )}
-    </div>
+        <button className={styles.toggleButton} onClick={onToggle} aria-label="Collapse sidebar" title="Collapse sidebar" tabIndex={collapsed ? -1 : 0}>
+          <ChevronIcon />
+        </button>
+      </div>
+
+      <div className={styles.sectionLabel}>
+        <span>All projects</span>
+        <span className={styles.count}>{repos.length}</span>
+      </div>
+
+      <nav className={styles.content}>
+        <ul className={styles.projectList}>
+          {repos.map(repo => (
+            <li key={repo.id}>
+              <button
+                className={styles.projectItem}
+                onClick={() => onRepoSelect(repo)}
+                title={repo.name}
+                tabIndex={collapsed ? -1 : 0}
+              >
+                <span className={styles.dot} style={{ background: getTagColor(repo.tags?.[0] ?? '') }} />
+                <span className={styles.projectName}>{repo.name}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
   );
 };
 

@@ -1,114 +1,113 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { RepoData } from './utils/RepoData';
+import { getTagColor } from './utils/getTagColor';
+import { CloseIcon, GitHubIcon, MenuIcon, SearchIcon } from './Icons';
 import styles from './TopBar.module.css';
 
-// Developer Dialog component
+const AVATAR_URL = 'https://avatars.githubusercontent.com/u/43663336?v=4';
+const SKILLS = ['React', 'Angular', 'Vue', '.NET', 'Java', 'Express', 'TypeScript', 'JavaScript', 'Web3', 'AI / LLMs'];
+
 interface DevDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 const DeveloperDialog: React.FC<DevDialogProps> = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className={styles.dialogOverlay}>
-      <div className={styles.dialogContent}>
-        <button className={styles.closeButton} onClick={onClose}>×</button>
-        <h2>About Me</h2>
+    <div className={styles.dialogOverlay} onClick={onClose}>
+      <div className={styles.dialogContent} onClick={e => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="About me">
+        <div className={styles.dialogBanner} />
+        <button className={styles.closeButton} onClick={onClose} aria-label="Close"><CloseIcon /></button>
         <div className={styles.developerInfo}>
-          <div className={styles.avatarLarge}>
-            <img src="https://avatars.githubusercontent.com/u/43663336?v=4" alt="Ivaylo Pavlov" />
-          </div>
-          <div className={styles.developerDetails}>
-            <h3>Ivaylo Pavlov</h3>
-            <p className={styles.jobTitle}>Fullstack Developer (.NET/Java/Express and Angular/React/Vue/TS)</p>
-            <p className={styles.introduction}>
-              Passionate fullstack developer with expertise in both backend (.NET, Java, Express) 
-              and frontend (Angular, React, Vue, TypeScript) technologies. Building modern web applications 
-              with clean, maintainable code.
-            </p>
-            <div className={styles.skills}>
-              <h4>Skills</h4>
-              <div className={styles.skillTags}>
-                <span>React</span>
-                <span>Angular</span>
-                <span>Vue</span>
-                <span>.NET</span>
-                <span>Java</span>
-                <span>Express</span>
-                <span>TypeScript</span>
-                <span>JavaScript</span>
-                <span>Web3</span>
-                <span>AI / LLMs</span>
+          <img className={styles.avatarLarge} src={AVATAR_URL} alt="Ivaylo Pavlov" />
+          <h3 className={styles.devName}>Ivaylo Pavlov</h3>
+          <p className={styles.jobTitle}>Fullstack Developer · .NET / Java / Express · Angular / React / Vue</p>
+          <p className={styles.introduction}>
+            Passionate fullstack developer with expertise in both backend (.NET, Java, Express)
+            and frontend (Angular, React, Vue, TypeScript) technologies. Building modern web applications
+            with clean, maintainable code.
+          </p>
 
-              </div>
+          <div className={styles.section}>
+            <h4>Skills</h4>
+            <div className={styles.skillTags}>
+              {SKILLS.map(skill => <span key={skill}>{skill}</span>)}
             </div>
-            <div className={styles.company}>
-              <h4>Currently working at</h4>
-              <div className={styles.companyInfo}>
-                <span className={styles.companyName}>blubito</span>
-                <span className={styles.location}>Sofia</span>
-              </div>
+          </div>
+
+          <div className={styles.section}>
+            <h4>Currently working at</h4>
+            <div className={styles.companyInfo}>
+              <span className={styles.companyName}>blubito</span>
+              <span className={styles.location}>Sofia</span>
             </div>
-            <div className={styles.links}>
-              <a href="https://github.com/ivaaak" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="mailto:ivaaakpavlov@gmail.com">Email</a>
-            </div>
+          </div>
+
+          <div className={styles.links}>
+            <a className={styles.primaryLink} href="https://github.com/ivaaak" target="_blank" rel="noopener noreferrer">
+              <GitHubIcon /> GitHub
+            </a>
+            <a className={styles.secondaryLink} href="mailto:ivaaakpavlov@gmail.com">Email</a>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 interface TopBarProps {
   repos: RepoData[];
+  shownCount: number;
+  closedCount: number;
+  onRestoreAll: () => void;
   onFilterChange: (filteredRepos: RepoData[]) => void;
+  onMenuClick: () => void;
 }
 
-export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
+export const TopBar: React.FC<TopBarProps> = ({ repos, shownCount, closedCount, onRestoreAll, onFilterChange, onMenuClick }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  
-  // Use a constant array instead of state for available tags
-  const availableTags = useMemo(() => 
-    ["AI/ML", "Web3", ".NET", "Express", "Java", "React", "Angular", "Vue", "Javascript", "Typescript", "C#", "Unity"],
-    []
-  );
 
-  // Memoize the filtering logic
+  // Tags derived from the data, most used first
+  const availableTags = useMemo(() => {
+    const counts = new Map<string, number>();
+    repos.forEach(repo => repo.tags?.forEach(tag => counts.set(tag, (counts.get(tag) ?? 0) + 1)));
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
+  }, [repos]);
+
   const filteredRepos = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
     return repos.filter(repo => {
-      const nameMatches = repo.name.toLowerCase().includes(searchTerm.toLowerCase());
-      
+      const textMatches = !term
+        || repo.name.toLowerCase().includes(term)
+        || repo.description?.toLowerCase().includes(term);
+
       if (selectedTags.length === 0) {
-        return nameMatches;
+        return textMatches;
       }
-      
-      const hasSelectedTag = repo.tags ? 
-        repo.tags.some(tag => selectedTags.includes(tag)) : 
-        false;
-      
-      return nameMatches && hasSelectedTag;
+
+      const hasSelectedTag = repo.tags ? repo.tags.some(tag => selectedTags.includes(tag)) : false;
+      return textMatches && hasSelectedTag;
     });
   }, [searchTerm, selectedTags, repos]);
 
-  // Call onFilterChange only when filteredRepos changes
-  React.useEffect(() => {
+  useEffect(() => {
     onFilterChange(filteredRepos);
   }, [filteredRepos, onFilterChange]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
   const handleTagToggle = (tag: string) => {
-    setSelectedTags(prevTags => 
-      prevTags.includes(tag)
-        ? prevTags.filter(t => t !== tag)
-        : [...prevTags, tag]
+    setSelectedTags(prevTags =>
+      prevTags.includes(tag) ? prevTags.filter(t => t !== tag) : [...prevTags, tag]
     );
   };
 
@@ -117,46 +116,77 @@ export const TopBar: React.FC<TopBarProps> = ({ repos, onFilterChange }) => {
     setSelectedTags([]);
   };
 
-  const toggleDialog = () => {
-    setIsDialogOpen(!isDialogOpen);
-  };
+  const hasFilters = searchTerm !== '' || selectedTags.length > 0;
 
   return (
-    <div className={styles.topBar}>
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Search projects..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className={styles.searchInput}
-        />
-      </div>
-      
-      <div className={styles.tagFilters}>
-        <div className={styles.tagsContainer}>
-          {availableTags.map(tag => (
-            <button
-              key={tag}
-              className={`${styles.tagButton} ${selectedTags.includes(tag) ? styles.tagSelected : ''}`}
-              onClick={() => handleTagToggle(tag)}
-            >
-              {tag}
-            </button>
-          ))}
+    <>
+    <header className={styles.topBar}>
+      <div className={styles.mainRow}>
+        <button className={styles.iconButton} onClick={onMenuClick} aria-label="Toggle project list" title="Toggle project list">
+          <MenuIcon />
+        </button>
+
+        <div className={styles.heading}>
+          <h1 className={styles.title}>Projects</h1>
+          <span className={styles.subtitle}>{shownCount} shown</span>
         </div>
-        
-        {(searchTerm || selectedTags.length > 0) && (
-          <button onClick={clearFilters} className={styles.clearAllButton}>
-            Clear All
-          </button>
-        )}
+
+        <div className={styles.searchContainer}>
+          <SearchIcon className={styles.searchIcon} />
+          <input
+            type="search"
+            placeholder="Search projects…"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+            aria-label="Search projects"
+          />
+        </div>
+
+        <button className={styles.avatarButton} onClick={() => setIsDialogOpen(true)} aria-label="About me" title="About me">
+          <img className={styles.avatar} src={AVATAR_URL} alt="" />
+        </button>
       </div>
 
-      <img className={styles.avatar} onClick={toggleDialog} src="https://avatars.githubusercontent.com/u/43663336?v=4 " alt="Developer avatar" />
-      
-      <DeveloperDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
-    </div>
+      <div className={styles.filterRow}>
+        <div className={styles.tagsContainer}>
+          {availableTags.map(({ tag, count }) => {
+            const selected = selectedTags.includes(tag);
+            return (
+              <button
+                key={tag}
+                className={`${styles.tagButton} ${selected ? styles.tagSelected : ''}`}
+                style={{ '--tag': getTagColor(tag) } as React.CSSProperties}
+                onClick={() => handleTagToggle(tag)}
+                aria-pressed={selected}
+              >
+                <span className={styles.tagDot} />
+                {tag}
+                <span className={styles.tagCount}>{count}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {(hasFilters || closedCount > 0) && (
+          <div className={styles.actions}>
+            {closedCount > 0 && (
+              <button onClick={onRestoreAll} className={styles.textButton}>
+                Reopen {closedCount} closed
+              </button>
+            )}
+            {hasFilters && (
+              <button onClick={clearFilters} className={styles.textButton}>
+                Clear filters
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <DeveloperDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
+    </>
   );
 };
 
