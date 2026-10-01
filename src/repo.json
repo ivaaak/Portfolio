@@ -59,7 +59,7 @@
         "id": 6,
         "name": "Web CAD",
         "html_url": "https://github.com/ivaaak/Web-CAD",
-        "image": "https://raw.githubusercontent.com/ivaaak/Web-CAD/refs/heads/main/src/assets/1.png",
+        "image": "https://raw.githubusercontent.com/ivaaak/Web-CAD/refs/heads/main/screenshots/1.png",
         "tags": [
             "React",
             "Three.js",
@@ -71,7 +71,7 @@
         "id": 7,
         "name": "Web3 Tokenization",
         "html_url": "https://github.com/ivaaak/Web3-Tokenization",
-        "image": "https://raw.githubusercontent.com/ivaaak/Web3-Tokenization/refs/heads/main/blockchain/contracts_diagram.png",
+        "image": "https://raw.githubusercontent.com/ivaaak/Web3-Tokenization/refs/heads/main/frontend/screenshots/howitworks1.png",
         "tags": [
             "Solidity",
             "Ethers.js",
@@ -81,15 +81,16 @@
     },
     {
         "id": 8,
-        "name": "AI Text Editor",
-        "html_url": "https://github.com/ivaaak/AI-Text-Editor",
-        "image": "https://raw.githubusercontent.com/ivaaak/AI-Text-Editor/main/screenshots/1.png",
+        "name": "FinAI",
+        "full_name": "ivaaak/FinAI",
+        "html_url": "https://github.com/ivaaak/FinAI",
+        "image": "https://raw.githubusercontent.com/ivaaak/FinAI/main/frontend/screenshots/1.png",
         "tags": [
             "React",
-            "AI/ML",
-            "Typescript"
+            "Express",
+            "AI/ML"
         ],
-        "description": "A Web App designed to use AI for better writing and text editing."
+        "description": "FinAI - React / Express / NodeLlamaCPP Financial App (get financial predictions based on a LLM) (WIP)"
     },
     {
         "id": 9,
@@ -128,16 +129,15 @@
     },
     {
         "id": 12,
-        "name": "FinAI",
-        "full_name": "ivaaak/FinAI",
-        "html_url": "https://github.com/ivaaak/FinAI",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREU2RgXYGjrrJ10cxOQJIdzGwuokkp5C8dbg&s",
+        "name": "AI Text Editor",
+        "html_url": "https://github.com/ivaaak/AI-Text-Editor",
+        "image": "https://raw.githubusercontent.com/ivaaak/AI-Text-Editor/main/screenshots/1.png",
         "tags": [
             "React",
-            "Express",
-            "AI/ML"
+            "AI/ML",
+            "Typescript"
         ],
-        "description": "FinAI - React / Express / NodeLlamaCPP Financial App (get financial predictions based on a LLM) (WIP)"
+        "description": "A Web App designed to use AI for better writing and text editing."
     },
     {
         "id": 13,
