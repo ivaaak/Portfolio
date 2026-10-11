@@ -53,7 +53,6 @@
         "image": "https://raw.githubusercontent.com/ivaaak/Web3-Tokenization/refs/heads/main/frontend/screenshots/howitworks1.png",
         "tags": [
             "Solidity",
-            "Ethers.js",
             "Web3"
         ],
         "description": "A web3 dApp which aims to tokenize real life collectible/rare items and create a marketplace for them using the blockchain. Still super early stage WIP - learning about Web3, Solidity and Ethers.js"
@@ -134,6 +133,7 @@
         "id": 12,
         "name": "Store Inventory Real-Time Tracking",
         "html_url": "https://github.com/ivaaak/Store-Inventory-Real-Time-Tracking",
+        "image": "https://raw.githubusercontent.com/ivaaak/Store-Inventory-Real-Time-Tracking/main/docs/1.png ",
         "tags": [
             "React",
             "Express",
